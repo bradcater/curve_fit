@@ -135,7 +135,10 @@ class CurveFit
   #    :guess => "Quadratic"
   #  }
   #
-  def fit(data, ceiling=nil, guess_list=["Linear", "Quadratic", "Cubic", "Polynomial4", "Polynomial5", "Polynomial6"], &x_transform)
+  def fit(data, opts={}, &x_transform)
+    ceiling = opts[:ceiling]
+    guess_list = opts[:guess_list] || ["Linear", "Quadratic", "Cubic", "Polynomial4", "Polynomial5", "Polynomial6"]
+    new_x_vals = Array(opts[:new_x_vals])
     data_file = Tempfile.new("curvefit")
     x_pos = 0
     data.each do |point|
@@ -399,6 +402,11 @@ class CurveFit
       x += 1
     end
 
+    new_xy_vals = if new_x_vals
+      new_x_vals.map{|x| [x, best_fit[:curve_formula].call(x)]}
+    else
+      nil
+    end
     {
       :data              => data,
       :trend             => trend_line,
@@ -406,8 +414,9 @@ class CurveFit
       :bottom_confidence => bottom_confidence_line,
       :ceiling           => ceiling_line,
       :r_squared         => best_fit[:r_squared],
-      :guess             => best_fit_name
-    }
+      :guess             => best_fit_name,
+      :new_xy_vals       => new_xy_vals
+    }.reject{|x, y| y.nil?}
   end
 
 end
