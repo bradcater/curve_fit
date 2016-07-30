@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{Wrapper for curve fitting and confidence around cfityk}
   gem.description = %Q{Creates curve fitting and confidence intervals from cfityk}
   gem.email = "adam@opscode.com"
-  gem.authors = ["Adam Jacob"]
+  gem.authors = ["Adam Jacob", "Brad Cater"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'

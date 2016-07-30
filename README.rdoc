@@ -2,7 +2,7 @@
 
 A wrapper around fityk (http://fityk.nieto.pl/) to handle fitting a curve to X+Y data, creating confidence intervals, and projecting up to a ceiling.
 
-You must have a working installation of cfityk in your path for this library to work.
+You must have a working installation of cfityk in your path for this library to work. I have v1.3.0.
 
 == Examples
 
@@ -81,9 +81,9 @@ populated with the ceiling value for each value of X.
 
 Would extrapolate up to 10000.
 
-Currently, this library only supports linear and quadratic fits.  By default it
-tries both, in that order.  You can specify the fits to guess manually, if you
-want to narrow things down:
+Currently, this library only supports linear, quadratic, cubic, polynomial4,
+polynomial5, and polynomial6 fits.  By default, it tries all, in that order.
+You can specify the fits to guess manually if you want to narrow things down:
 
   cf.fit(
     [
