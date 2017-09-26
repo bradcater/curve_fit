@@ -140,10 +140,8 @@ class CurveFit
     guess_list = opts[:guess_list] || ["Linear", "Quadratic", "Cubic", "Polynomial4", "Polynomial5", "Polynomial6"]
     new_x_vals = Array(opts[:new_x_vals])
     data_file = Tempfile.new("curvefit")
-    x_pos = 0
     data.each do |point|
-      data_file.puts("#{x_pos} #{point[1]}")
-      x_pos += 1
+      data_file.puts("#{point[0]} #{point[1]}")
     end
     data_file.close
 
