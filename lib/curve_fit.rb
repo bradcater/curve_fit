@@ -150,7 +150,7 @@ class CurveFit
     guess_list.each do |shape|
       guess_data[shape] = Hash.new
       puts "Guessing #{shape} fit..." if @debug
-      IO.popen("cfityk -I -q -c '@0 < '#{data_file.path}'; guess #{shape}; fit; info formula; info fit; info errors;'") do |fityk_output|
+      IO.popen("cfityk -I -q -c 'set autoplot=0 ; @0 < '#{data_file.path}'; guess #{shape}; fit; info formula; info fit; info errors;'") do |fityk_output|
         fityk_output.each_line do |line|
           puts "#{shape}: #{line}" if @debug
           case line
