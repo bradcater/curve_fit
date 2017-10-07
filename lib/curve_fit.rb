@@ -249,7 +249,7 @@ class CurveFit
           when /R2=(.+)/
             guess_data[shape][:r_squared] = $1.to_f
           # Error: $_1 = 692.1 +- 32.0558
-          when /\$_(\d+) = ([\-\d\.]+) \+\- ([\-\d\.]+)/
+          when /\$_(\d+) = ([\-\d\.e]+) \+\- ([\-\d\.]+)/
             guess_data[shape][:curve_error_args] ||= Hash.new
             guess_data[shape][:curve_error_args][$1.to_i] = [ $2.to_f, $3.to_f ]
           end
